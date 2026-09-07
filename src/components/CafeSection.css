@@ -1,0 +1,111 @@
+.cafe-section {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 80px 8%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cafe-section:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Image */
+
+.cafe-image {
+  flex: 1;
+  overflow: hidden;
+}
+
+.cafe-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.cafe-image img:hover {
+  transform: scale(1.05);
+}
+
+
+/* Content */
+
+.cafe-content {
+  flex: 1;
+}
+
+.cafe-content .cafe-title {
+  color: rgb(161, 13, 13);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.cafe-content h3 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.cafe-content p {
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+
+/* =========================
+   TABLET
+   ========================= */
+
+@media (max-width: 768px) {
+
+  .cafe-section {
+    flex-direction: column;
+    padding: 60px 6%;
+    gap: 30px;
+  }
+
+  .cafe-image,
+  .cafe-content {
+    width: 100%;
+  }
+
+  .cafe-image img {
+    height: 350px;
+  }
+
+  .cafe-content h3 {
+    font-size: 34px;
+  }
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 480px) {
+
+  .cafe-section {
+    padding: 50px 5%;
+    gap: 25px;
+  }
+
+  .cafe-image img {
+    height: 250px;
+  }
+
+  .cafe-content h2 {
+    font-size: 16px;
+  }
+
+  .cafe-content h3 {
+    font-size: 28px;
+  }
+
+  .cafe-content p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+}

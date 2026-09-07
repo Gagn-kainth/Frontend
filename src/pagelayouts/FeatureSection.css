@@ -1,0 +1,124 @@
+.feature-section {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    padding: 80px 8%;
+    max-width: 1400px;
+    margin: 0 auto;
+  
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .feature-section:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Image left variant */
+  .feature-section--img-left {
+    flex-direction: row;
+  }
+  
+  /* Image right variant */
+  .feature-section--img-right {
+    flex-direction: row-reverse;
+  }
+  
+  /* Image */
+  .feature-image {
+    flex: 1;
+    overflow: hidden;
+  }
+  
+  .feature-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  
+  .feature-image img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Content */
+  .feature-content {
+    flex: 1;
+  }
+  
+  .feature-label {
+    display: block;
+    color: rgb(161, 13, 13);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  
+  .feature-content h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+  
+  .feature-content p {
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  
+  .feature-content p:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* =========================
+     TABLET
+     ========================= */
+  @media (max-width: 768px) {
+    .feature-section,
+    .feature-section--img-left,
+    .feature-section--img-right {
+      flex-direction: column;
+      padding: 60px 6%;
+      gap: 30px;
+    }
+  
+    .feature-image,
+    .feature-content {
+      width: 100%;
+    }
+  
+    .feature-image img {
+      height: 350px;
+    }
+  
+    .feature-content h2 {
+      font-size: 34px;
+    }
+  }
+  
+  /* =========================
+     MOBILE
+     ========================= */
+  @media (max-width: 480px) {
+    .feature-section {
+      padding: 50px 5%;
+      gap: 25px;
+    }
+  
+    .feature-image img {
+      height: 250px;
+    }
+  
+    .feature-label {
+      font-size: 1.1rem;
+    }
+  
+    .feature-content h2 {
+      font-size: 28px;
+    }
+  
+    .feature-content p {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+  }

@@ -1,0 +1,50 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&display=swap");
+.coming-soon-layout {
+  position: relative;
+
+  min-height: calc(100vh - 95px);
+
+  background-image: url("../img/comingsoon1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.coming-soon-overlay {
+  position: absolute;
+  inset: 0;
+
+ 
+}
+
+.coming-soon-content {
+  position: relative;
+  z-index: 2;
+
+  text-align: center;
+}
+
+.coming-soon-content h3 {
+  color: rgb(255, 255, 255);
+  font-family: "Josefin Sans", sans-serif;
+
+  font-size: 60px;
+   font-weight: 600;
+  line-height: 1.15;
+  text-shadow: 2px 2px 5px black;
+}
+
+.coming-soon-content p {
+  margin-top: 40px;
+
+  color: white;
+  text-shadow: 2px 2px 5px black;
+  font-size: clamp(24px, 3vw, 42px);
+}

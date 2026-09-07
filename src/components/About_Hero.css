@@ -1,0 +1,100 @@
+.about-hero {
+    padding: 100px 8%;
+    background: #f5f5f0;
+  }
+  
+  .about-hero h1 {
+    font-size: 52px;
+    font-weight: 800;
+    color: #10120f;
+    margin-bottom: 50px;
+  }
+  
+  /* Card */
+  .excellence-card {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    text-align: center;
+  
+    color: white;
+    cursor: pointer;
+  
+    overflow: hidden;
+  
+    background-image: url("../img/bk.jpg");
+    background-size: cover;
+    background-position: center;
+  
+    transition: all 1s ease;
+  }
+  
+  /* Dark overlay */
+  .excellence-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+  
+    background: rgba(0, 0, 0, 0.35);
+  
+    transition: all 1s ease;
+  }
+  
+  /* Content should stay above overlay */
+  .excellence-card h3,
+  .excellence-card p {
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Heading */
+  .excellence-card h3 {
+    color: #ffffff;
+    font-size: 28px;
+    margin: 0;
+  
+    transition: transform 1s ease;
+  }
+  
+  /* Paragraph */
+  .excellence-card p {
+    max-width: 700px;
+  
+    font-size: 17px;
+    line-height: 1.7;
+  
+    margin: 20px 0 0;
+  
+    opacity: 0;
+    transform: translateY(30px);
+  
+    transition: all 1s ease;
+  }
+  
+  /* Hover - blur image */
+  .excellence-card:hover {
+    background-size: 105%;
+  }
+  
+  .excellence-card:hover::before {
+    background: rgba(0, 0, 0, 0.55);
+  
+    backdrop-filter: blur(5px);
+  }
+  
+  /* Heading moves slightly up */
+  .excellence-card:hover h3 {
+    transform: translateY(-10px);
+  }
+  
+  /* Paragraph comes up */
+  .excellence-card:hover p {
+    opacity: 1;
+    transform: translateY(0);
+  }

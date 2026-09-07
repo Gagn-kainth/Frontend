@@ -1,0 +1,235 @@
+.footer {
+    background: #ffffff;
+    padding: 70px 4.5% 30px;
+    color: #111;
+  }
+  
+  /* =========================
+     TOP SECTION
+  ========================= */
+  
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 80px;
+    padding-bottom: 70px;
+  }
+  
+  /* Logo */
+  
+  .footer-logo {
+    position: relative;
+    display: inline-block;
+    font-size: 38px;
+    font-weight: 500;
+    letter-spacing: -2px;
+    margin-bottom: 25px;
+  }
+  
+  .footer-logo span {
+    color: rgb(161, 13, 13);
+  }
+  
+  /* Community */
+  
+  .footer-community h3 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 22px;
+  }
+  
+  .footer-community p {
+    font-size: 14px;
+    color: #60708a;
+    margin-bottom: 20px;
+  }
+  
+  /* Subscribe */
+  
+  .subscribe {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .subscribe input {
+    width: 330px;
+    border: none;
+    border-bottom: 1px solid #ccd1d8;
+    outline: none;
+    padding: 12px 0;
+    font-size: 14px;
+  }
+  
+  .subscribe input::placeholder {
+    color: #9da8b8;
+  }
+  
+  .subscribe button {
+    border: none;
+    background: #000;
+    color: #fff;
+    padding: 12px 27px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .subscribe button:hover {
+    background:rgb(161, 13, 13);
+    color: #000;
+    transform: translateY(-2px);
+  }
+  
+  /* =========================
+     INFO
+  ========================= */
+  
+  .footer-info h4 {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 22px;
+  }
+  
+  .footer-info p {
+    color: #60708a;
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0 0 5px;
+  }
+  
+  /* =========================
+     DIVIDER
+  ========================= */
+  
+  .footer-line {
+    height: 1px;
+    background: #eeeeee;
+  }
+  
+  /* =========================
+     DESIGNER
+  ========================= */
+  
+  .designer {
+    text-align: center;
+    margin: 32px 0 25px;
+    font-size: 14px;
+    color: #243b5a;
+  }
+  
+  /* =========================
+     FOOTER LINKS
+  ========================= */
+  
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+  
+  .footer-links a {
+    position: relative;
+    text-decoration: none;
+    color: #40536c;
+    font-size: 14px;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+  }
+  
+  /* Green line underneath */
+  
+  .footer-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  
+    width: 0;
+    height: 2px;
+  
+    background: rgb(161, 13, 13);;
+  
+    transition: width 0.3s ease;
+  }
+  
+  /* Hover */
+  
+  .footer-links a:hover {
+    color: rgb(161, 13, 13);;
+  }
+  
+  .footer-links a:hover::after {
+    width: 100%;
+  }
+  
+  /* =========================
+     BOTTOM
+  ========================= */
+  
+  .footer-bottom-line {
+    height: 1px;
+    background: #eeeeee;
+    margin-top: 32px;
+  }
+  
+  .copyright {
+    text-align: center;
+    color: #718096;
+    font-size: 13px;
+    margin-top: 25px;
+  }
+  
+  /* =========================
+     RESPONSIVE
+  ========================= */
+  
+  @media (max-width: 900px) {
+  
+    .footer-top {
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+  
+    .footer-community {
+      grid-column: 1 / -1;
+    }
+  
+  }
+  
+  @media (max-width: 600px) {
+  
+    .footer {
+      padding: 50px 6% 25px;
+    }
+  
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  
+    .footer-community {
+      grid-column: auto;
+    }
+  
+    .subscribe {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .subscribe input {
+      width: 100%;
+    }
+  
+    .subscribe button {
+      width: fit-content;
+    }
+  
+    .footer-links {
+      flex-direction: column;
+      gap: 18px;
+    }
+  
+  }
