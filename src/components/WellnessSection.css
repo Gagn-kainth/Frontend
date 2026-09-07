@@ -81,7 +81,7 @@
 
 /* Mobile */
 
-@media (max-width: 480px) {
+@media (max-width: 440px) {
 
   .wellness-section {
     min-height: auto;
@@ -106,8 +106,11 @@
     font-size: 0.95rem;
     line-height: 1.6;
   }
-
+  .wellness-image{
+    order:-1;
+  }
   .wellness-image img {
     height: 250px;
+    
   }
 }

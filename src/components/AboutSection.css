@@ -87,7 +87,7 @@
 
 /* Mobile */
 
-@media (max-width: 480px) {
+@media (max-width: 440px) {
 
   .about-section {
     min-height: auto;
@@ -116,5 +116,7 @@
 
   .about-image img {
     height: 250px;
+  
   }
+
 }
