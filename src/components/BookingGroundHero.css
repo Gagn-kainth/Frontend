@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap');
+
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.booking-ground-hero {
+    font-family: 'Poppins', sans-serif;
+    background-color: #000000;
+
+    
+}
+.booking-ground-hero-heading{
+    color: #ffffff;
+    font-size: 2.5rem;
+    padding-top: 2rem;
+    margin-left: 2rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 60px;
+}
+.highlight{
+    color: rgb(161, 13, 13);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 60px;
+}
+.booking-ground-hero-description{
+    color:  rgba(128, 128, 128, 0.641);
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    padding: 1rem 0rem 2rem 0rem;
+    margin-left: 2rem;
+    font-weight: 300;
+    font-size:20px;
+}

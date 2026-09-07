@@ -1,3 +1,4 @@
+import './BookingGroundHero.css';
 const STEPS = [
     {
       label: "Select Ground",
