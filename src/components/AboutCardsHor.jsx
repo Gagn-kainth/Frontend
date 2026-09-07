@@ -1,7 +1,7 @@
 import "./AboutCardsHor.css";
 
 import image1 from "../img/comp.jpg";
-import image2 from "../img/cricket-ground.jpg";
+import image2 from "../img/cricket_community.jpg";
 import image3 from "../img/access.jpg";
 
 function AboutCardsHor() {

@@ -92,20 +92,20 @@
     gap: 25px;
   }
 
-  .cafe-image img {
-    height: 250px;
-  }
-
+  
   .cafe-content h2 {
     font-size: 16px;
   }
-
+  
   .cafe-content h3 {
     font-size: 28px;
   }
-
+  
   .cafe-content p {
     font-size: 15px;
     line-height: 1.6;
+  }
+  .cafe-image img {
+    height: 250px;
   }
 }
