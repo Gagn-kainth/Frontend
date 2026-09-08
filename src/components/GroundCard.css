@@ -1,0 +1,118 @@
+
+.bc-ground-card {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    cursor: pointer;
+    margin-bottom: 20px;
+    margin-left: 2rem;
+    width: 800px;
+    transition: border-color 150ms ease;
+  }
+  
+  .bc-ground-card.selected {
+    border-color: #e6362c;
+  }
+  
+  .bc-ground-card-bg {
+    height: 190px;
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .bc-badge-row {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .bc-badge {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  
+  .bc-badge.available {
+    background: #1d9a5c;
+  }
+  
+  .bc-badge.selected {
+    background: #e6362c;
+  }
+  
+  .bc-badge.slot {
+    background: #2a2a2a;
+    font-size: 11px;
+  }
+  
+  .bc-ground-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  
+  .bc-ground-name {
+    color: #fff;
+    font-size: 22px;
+    margin: 0 0 4px;
+    font-weight: 700;
+  }
+  
+  .bc-ground-location {
+    color: #c9c9c9;
+    font-size: 13px;
+    margin: 0 0 8px;
+  }
+  
+  .bc-tag-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  
+  .bc-tag {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ddd;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 5px;
+  }
+  
+  .bc-price-block {
+    text-align: right;
+  }
+  
+  .bc-price-label {
+    color: #999;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+  
+  .bc-price-value {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  
+  .bc-select-btn {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .bc-select-btn.selected {
+    background: #e6362c;
+  }
+  

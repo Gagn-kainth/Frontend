@@ -96,8 +96,8 @@
 /* SELECTED DATE */
 
 .date-card.selected {
-  background: #e5252a;
-  border-color: #e5252a;
+  background:  rgb(161, 13, 13);
+  border-color:  rgb(161, 13, 13);
 }
 
 
