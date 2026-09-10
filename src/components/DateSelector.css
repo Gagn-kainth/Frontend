@@ -114,7 +114,11 @@
   color: #fff;
 }
 
-
+.date-card.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
 /* ARROWS */
 
 .arrow-btn {
@@ -151,7 +155,7 @@
 
 /* MOBILE */
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
 
   .date-section {
     padding: 30px 18px 45px;

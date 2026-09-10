@@ -1,158 +1,166 @@
-*{
+* {
   padding: 0px;
-  margin: 0px;    
+  margin: 0px;
   box-sizing: border-box;
-  
-  }
-  .bc-ground-list{
-    padding-bottom: 20px;
-  }
+}
+.bc-ground-list {
+  padding-bottom: 20px;
+}
 .bc-ground-card {
-    position: relative;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 2px solid transparent;
-    cursor: pointer;
-    margin-left: 2rem;
-    margin-bottom: 2rem;
-    width: 800px;
-    transition: border-color 150ms ease;
-    transition: 0.3s;
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 800px;
 
-  }
-  .bc-ground-card:hover {
-    border-color: rgb(161, 13, 13);
-    transform: scale(1.02);
-    opacity: 0.9;
+  /* base shadow (transparent) for smooth hover transition */
+  box-shadow: 0 0 0 rgba(161, 13, 13, 0);
 
+  /* explicit transitions for better performance */
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* hint the browser to prep for transform/shadow changes */
+  will-change: transform, box-shadow;
+}
+.bc-ground-card:hover,
+.bc-ground-card:focus-visible {
+  border-color: rgb(161, 13, 13);
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(161, 13, 13, 0.3);
+  z-index: 1;
+}
+.bc-ground-card:focus-visible {
+  outline: 2px solid rgb(161, 13, 13);
+  outline-offset: 2px;
+}
+.bc-ground-card.selected {
+  border-color: rgb(161, 13, 13);
+}
+
+.bc-ground-card-bg {
+  height: 190px;
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.bc-badge-row {
+  display: flex;
+  gap: 8px;
+}
+
+.bc-badge {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.bc-badge.available {
+  background: #1d9a5c;
+}
+
+.bc-badge.selected {
+  background: rgb(161, 13, 13);
+}
+
+.bc-badge.slot {
+  background: #2a2a2a;
+  font-size: 11px;
+}
+
+.bc-ground-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.bc-ground-name {
+  color: #fff;
+  font-size: 22px;
+  margin: 0 0 4px;
+  font-weight: 700;
+}
+
+.bc-ground-location {
+  color: #c9c9c9;
+  font-size: 13px;
+  margin: 0 0 8px;
+}
+
+.bc-tag-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.bc-tag {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ddd;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 5px;
+}
+
+.bc-price-block {
+  text-align: right;
+}
+
+.bc-price-label {
+  color: #999;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.bc-price-value {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.bc-select-btn {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.bc-select-btn.selected {
+  background: rgb(161, 13, 13);
+}
+
+@media screen and (max-width: 900px) {
+  .bc-ground-card {
+    width: 100%;
+    margin-left: 0;
   }
-  .bc-ground-card.selected {
-    border-color: rgb(161, 13, 13);
+}
+
+@media screen and (max-width: 400px) {
+  .bc-ground-card {
+    margin: 0 1rem;
   }
-  
+
   .bc-ground-card-bg {
-    height: 190px;
-    background-size: cover;
-    background-position: center;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    
+    height: 150px;
   }
-  
-  .bc-badge-row {
-    display: flex;
-    gap: 8px;
-  }
-  
-  .bc-badge {
-    color: #fff;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 999px;
-  }
-  
-  .bc-badge.available {
-    background: #1d9a5c;
-  }
-  
-  .bc-badge.selected {
-    background: rgb(161, 13, 13);
-  }
-  
-  .bc-badge.slot {
-    background: #2a2a2a;
-    font-size: 11px;
-  }
-  
-  .bc-ground-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-  
+
   .bc-ground-name {
-    color: #fff;
-    font-size: 22px;
-    margin: 0 0 4px;
-    font-weight: 700;
+    font-size: 18px;
   }
-  
-  .bc-ground-location {
-    color: #c9c9c9;
-    font-size: 13px;
-    margin: 0 0 8px;
-  }
-  
-  .bc-tag-row {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  
-  .bc-tag {
-    background: rgba(255, 255, 255, 0.1);
-    color: #ddd;
-    font-size: 11px;
-    padding: 3px 8px;
-    border-radius: 5px;
-  }
-  
-  .bc-price-block {
-    text-align: right;
-  }
-  
-  .bc-price-label {
-    color: #999;
-    font-size: 11px;
-    letter-spacing: 1px;
-  }
-  
+
   .bc-price-value {
-    color: #fff;
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 8px;
+    font-size: 20px;
   }
-  
-  .bc-select-btn {
-    background: rgba(255, 255, 255, 0.12);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 16px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-  }
-  
-  .bc-select-btn.selected {
-    background: rgb(161, 13, 13);
-  }
-  
-  @media screen and (max-width: 900px) {
-    .bc-ground-card {
-      width: 100%;
-      margin-left: 0;
-    }
-  }
-  
-  @media screen and (max-width: 400px) {
-    .bc-ground-card {
-      margin: 0 1rem;
-    }
-  
-    .bc-ground-card-bg {
-      height: 150px;
-    }
-  
-    .bc-ground-name {
-      font-size: 18px;
-    }
-  
-    .bc-price-value {
-      font-size: 20px;
-    }
-  }
+}

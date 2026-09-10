@@ -1,9 +1,8 @@
 import { useState } from "react";
 import "./DateSelector.css";
 
-function DateSelector() {
+function DateSelector({ selectedDate, setSelectedDate }) {
   const [startDate, setStartDate] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState(new Date());
 
   // Generate 7 dates
   const getDates = () => {
@@ -20,6 +19,16 @@ function DateSelector() {
   };
 
   const dates = getDates();
+
+  const isPastDate = (date) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const compareDate = new Date(date);
+    compareDate.setHours(0, 0, 0, 0);
+
+    return compareDate < today;
+  };
 
   // Next 7 days
   const nextDates = () => {
@@ -53,62 +62,42 @@ function DateSelector() {
 
   return (
     <section className="date-section">
-
       <p className="date-title">SELECT DATE</p>
 
       <div className="date-selector">
-
-        <button
-          className="arrow-btn"
-          onClick={previousDates}
-        >
+        <button className="arrow-btn" onClick={previousDates}>
           ‹
         </button>
 
         <div className="date-list">
-
           {dates.map((date) => {
-
             const isSelected =
-              date.toDateString() ===
-              selectedDate.toDateString();
+              selectedDate?.toDateString() === date.toDateString();
+            const disabled = isPastDate(date);
 
             return (
               <button
                 key={date.toISOString()}
-                className={`date-card ${
-                  isSelected ? "selected" : ""
+                className={`date-card ${isSelected ? "selected" : ""} ${
+                  disabled ? "disabled" : ""
                 }`}
-                onClick={() => setSelectedDate(date)}
+                onClick={() => !disabled && setSelectedDate(date)}
+                disabled={disabled}
               >
+                <span className="day">{formatDay(date)}</span>
 
-                <span className="day">
-                  {formatDay(date)}
-                </span>
+                <span className="date-number">{date.getDate()}</span>
 
-                <span className="date-number">
-                  {date.getDate()}
-                </span>
-
-                <span className="month">
-                  {formatMonth(date)}
-                </span>
-
+                <span className="month">{formatMonth(date)}</span>
               </button>
             );
           })}
-
         </div>
 
-        <button
-          className="arrow-btn"
-          onClick={nextDates}
-        >
+        <button className="arrow-btn" onClick={nextDates}>
           ›
         </button>
-
       </div>
-
     </section>
   );
 }

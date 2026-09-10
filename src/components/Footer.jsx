@@ -84,7 +84,7 @@ function Footer() {
       <div className="footer-bottom-line"></div>
 
       <div className="copyright">
-        © 2026 Bounday .Club. All rights reserved.
+        © 2026 Boundary .Club. All rights reserved.
       </div>
 
     </footer>
