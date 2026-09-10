@@ -1,4 +1,4 @@
-import "./About_Hero.css";
+import "../style/About_Hero.css";
 
 function About_Hero() {
   return (

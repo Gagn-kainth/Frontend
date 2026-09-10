@@ -1,4 +1,4 @@
-import "./BookingSummary.css";
+import "../style/BookingSummary.css";
 
 const GST_RATE = 0.18;
 

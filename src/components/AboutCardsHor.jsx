@@ -1,4 +1,4 @@
-import "./AboutCardsHor.css";
+import "../style/AboutCardsHor.css";
 
 import image1 from "../img/comp.jpg";
 import image2 from "../img/cricket_community.jpg";

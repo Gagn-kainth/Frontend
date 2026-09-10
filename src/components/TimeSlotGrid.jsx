@@ -1,4 +1,4 @@
-import'./TimeSlotGrid.css';
+import'../style/TimeSlotGrid.css';
 
 
 const TIME_SLOTS = [

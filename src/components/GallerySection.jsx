@@ -1,4 +1,4 @@
-import "./GallerySection.css";
+import "../style/GallerySection.css";
 
 import cricket1 from "../img/cricket1.jpg";
 import cricket2 from "../img/cricket2.jpg";

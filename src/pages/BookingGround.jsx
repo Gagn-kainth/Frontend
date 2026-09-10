@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./BookingGround.css";
+import "../style/BookingGround.css";
 import BookingGroundHero from "../components/BookingGroundHero";
 import DateSelector from "../components/DateSelector";
 import GroundCard, { GROUNDS } from "../components/GroundCard";

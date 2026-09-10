@@ -1,4 +1,4 @@
-import './GroundCard.css';
+import '../style/GroundCard.css';
 import ground from "../img/bk.jpg";
 export const GROUNDS = [
     {

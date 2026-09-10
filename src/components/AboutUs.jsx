@@ -1,4 +1,4 @@
-import "./AboutUs.css";
+import "../style/AboutUs.css";
 import cricketground from '../img/cricket-ground.jpg'
 
 function AboutUs() {

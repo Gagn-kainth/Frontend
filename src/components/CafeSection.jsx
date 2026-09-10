@@ -1,4 +1,4 @@
-import "./CafeSection.css";
+import "../style/CafeSection.css";
 import cafe from "../img/cafe.jpg";
 
 function CafeSection() {

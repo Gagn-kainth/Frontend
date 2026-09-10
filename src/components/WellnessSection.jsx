@@ -1,4 +1,4 @@
-import "./WellnessSection.css";
+import "../style/WellnessSection.css";
 import wellness from "../img/wellness.jpg"
 
 function WellnessSection() {

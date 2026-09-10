@@ -1,4 +1,4 @@
-import "./RecoverySection.css";
+import "../style/RecoverySection.css";
 import recovery from '../img/recovery.jpg'
 function RecoverySection() {
   return (

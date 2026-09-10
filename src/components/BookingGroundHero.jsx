@@ -1,4 +1,4 @@
-import './BookingGroundHero.css';
+import '../style/BookingGroundHero.css';
 const STEPS = [
     {
       label: "Select Ground",

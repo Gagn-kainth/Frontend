@@ -1,4 +1,4 @@
-import "./AboutSection.css";
+import "../style/AboutSection.css";
 import vrImage from "../img/vr.jpg";
 
 function AboutSection() {
