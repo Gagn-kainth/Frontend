@@ -91,7 +91,12 @@
   color: #666;
   margin-top: 8px;
 }
-
+/* HOVER*/
+.date-card:hover {
+  background: #1c1c1c;
+  border-color: #444;
+  transform: scale(1.05);
+}
 
 /* SELECTED DATE */
 
@@ -121,7 +126,7 @@
   border-radius: 50%;
   border: 1px solid #292929;
 
-  background: #101010;
+  background: #1c1c1c;
   color: #ddd;
 
   display: flex;

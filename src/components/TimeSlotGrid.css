@@ -1,0 +1,138 @@
+.bc-slots-wrap {
+    background-color: #000000;
+    
+  }
+  
+  .bc-slots-title {
+    color: #999;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+    margin-left: 2rem;
+
+  }
+  
+  .bc-slots-subtitle {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 14px;
+    margin-left: 2rem;
+
+}
+  
+  .bc-slots-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 0.2fr);
+    gap: 10px;
+    margin-left: 1rem;
+  }
+  
+  .bc-slot-btn {
+    padding: 12px 0;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    background: #181818;
+    color: #fff;
+    transition: all 0.2s ease;
+  }
+  
+  .bc-slot-btn.selected {
+    background: rgb(161, 13, 13);
+    
+  }
+  .bc-slot-btn:hover {
+    background: rgba(245, 3, 3, 0.56);
+    transform: scale(1.07);
+    opacity: 0.9;
+  
+  }
+  .bc-slot-btn.booked {
+    background: #1a1a1a;
+    color: #555;
+    text-decoration: line-through;
+    cursor: not-allowed;
+  }
+  
+  .bc-legend-row {
+    display: flex;
+    gap: 18px;
+    margin-top: 14px;
+    font-size: 12px;
+    color: #999;
+  }
+  
+  .bc-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .bc-legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+  
+  .bc-legend-dot.available {
+    background: #181818;
+  }
+  
+  .bc-legend-dot.selected {
+    background: rgb(161, 13, 13);
+  }
+  
+  .bc-legend-dot.booked {
+    background: #1a1a1a;
+  }
+  
+
+  @media screen and (max-width: 600px) {
+    .bc-slots-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-left: 1rem;
+    }
+  
+    .bc-slot-btn {
+      padding: 10px 0;
+      font-size: 13px;
+    }
+  
+    .bc-legend-row {
+      gap: 12px;
+      font-size: 11px;
+    }
+  
+    .bc-legend-dot {
+      width: 8px;
+      height: 8px;
+    }
+    
+  }
+  @media screen and(max-width: 440px) {
+    .bc-slots-grid {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 6px;
+      margin-left: 0.5rem;
+    }
+  
+    .bc-slot-btn {
+      padding: 8px 0;
+      font-size: 12px;
+    }
+  
+    .bc-legend-row {
+      gap: 8px;
+      font-size: 10px;
+    }
+  
+    .bc-legend-dot {
+      width: 6px;
+      height: 6px;
+    }
+  }
+  
