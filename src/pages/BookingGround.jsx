@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "../style/BookingGround.css";
+import { useNavigate } from "react-router-dom";
+
 import BookingGroundHero from "../components/BookingGroundHero";
 import DateSelector from "../components/DateSelector";
 import GroundCard, { GROUNDS } from "../components/GroundCard";
@@ -7,6 +9,7 @@ import TimeSlotGrid from "../components/TimeSlotGrid";
 import BookingSummary from "../components/BookingSummary";
 
 function BookingGround() {
+  const navigate = useNavigate();
   const [selectedId, setSelectedId] = useState(null);
   const [selectedSlots, setSelectedSlots] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -20,30 +23,33 @@ function BookingGround() {
 
   function handleToggleSlot(slot) {
     setSelectedSlots((prev) =>
-      prev.includes(slot)
-        ? prev.filter((s) => s !== slot)
-        : [...prev, slot]
+      prev.includes(slot) ? prev.filter((s) => s !== slot) : [...prev, slot]
     );
+  }
+
+  function handleContinue() {
+    navigate("/BookingGround/details", {
+      state: {
+        groundId: selectedGround.id,
+        date: selectedDate,
+        selectedSlots,
+      },
+    });
   }
 
   return (
     <>
-      <BookingGroundHero />
-  
+      <BookingGroundHero currentStep={0} />
+
       <DateSelector
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
       />
-  
+
       <div className="bc-booking-layout">
-  
         {/* LEFT SIDE */}
         <div className="bc-booking-main">
-  
-          <div
-            className="bc-ground-list"
-            
-          >
+          <div className="bc-ground-list">
             {GROUNDS.map((ground) => (
               <GroundCard
                 key={ground.id}
@@ -53,26 +59,23 @@ function BookingGround() {
               />
             ))}
           </div>
-  
+
           <TimeSlotGrid
             ground={selectedGround}
             selectedSlots={selectedSlots}
             onToggleSlot={handleToggleSlot}
           />
-  
         </div>
-  
+
         {/* RIGHT SIDE */}
         <aside className="bc-booking-sidebar">
-  
           <BookingSummary
             ground={selectedGround}
             date={selectedDate}
             selectedSlots={selectedSlots}
+            onContinue={handleContinue}
           />
-  
         </aside>
-  
       </div>
     </>
   );

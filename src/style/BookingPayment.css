@@ -1,0 +1,191 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.bc-payment-page {
+  min-height: 100vh;
+  background-color: #000000;
+}
+
+.bc-payment-layout {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 40px 32px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.bc-payment-card {
+  background: #0d0d0d;
+  border: 1px solid #1f1f1f;
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.bc-payment-card-title {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.bc-review-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 32px;
+}
+
+.bc-review-label {
+  color: #888;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.bc-review-value {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.bc-payment-row {
+  display: flex;
+  justify-content: space-between;
+  color: #ccc;
+  font-size: 14px;
+  padding: 10px 0;
+}
+
+.bc-payment-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #222;
+  margin-top: 8px;
+  padding-top: 16px;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.bc-payment-total-value {
+  color: rgb(220, 40, 40);
+  font-size: 20px;
+}
+
+.bc-payment-methods {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #1f1f1f;
+}
+
+.bc-payment-methods-label {
+  color: #777;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.bc-payment-methods-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.bc-payment-method-tag {
+  background: #161616;
+  border: 1px solid #2a2a2a;
+  color: #ddd;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+}
+
+.bc-pay-btn {
+    width: 100%;
+    background: rgb(196, 24, 24);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 24px;
+  
+    /* added transform + faster duration */
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  
+  .bc-pay-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+  
+  /* press feedback — feels much more "payment button" */
+  .bc-pay-btn:active {
+    transform: scale(0.98);
+  }
+  
+  /* keyboard accessibility */
+  .bc-pay-btn:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+  }
+  
+  /* if the button gets disabled during payment processing */
+  .bc-pay-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  
+  .bc-payment-secure-note {
+  text-align: center;
+  color: #777;
+  font-size: 12px;
+  margin-top: 12px;
+}
+
+.bc-back-details-btn {
+  align-self: center;
+  background: transparent;
+  color: #ccc;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.bc-back-details-btn:hover {
+  background: #1a1a1a;
+}
+
+@media screen and (max-width: 700px) {
+  .bc-payment-layout {
+    padding: 24px 16px 60px;
+  }
+
+  .bc-payment-card {
+    padding: 22px;
+  }
+
+  .bc-review-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (hover: none) {
+  .bc-pay-btn:hover {
+    opacity: 0.9;
+    transform: none;
+  }
+}

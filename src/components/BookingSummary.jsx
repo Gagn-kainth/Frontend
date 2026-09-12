@@ -2,7 +2,7 @@ import "../style/BookingSummary.css";
 
 const GST_RATE = 0.18;
 
-function BookingSummary({ ground, date, selectedSlots, onContinue }) {
+function BookingSummary({ ground, date, selectedSlots, onContinue,showContinueButton = true  }) {
   const hours = selectedSlots.length;
   const basePrice = ground ? ground.pricePerHour * hours : 0;
   const gst = Math.round(basePrice * GST_RATE);
@@ -65,7 +65,7 @@ function BookingSummary({ ground, date, selectedSlots, onContinue }) {
           </span>
         </div>
       </div>
-
+      {showContinueButton && (
       <button
         className="bc-continue-btn"
         disabled={!ground || hours === 0}
@@ -73,6 +73,7 @@ function BookingSummary({ ground, date, selectedSlots, onContinue }) {
       >
         Continue to Details →
       </button>
+      )}
     </div>
   );
 }

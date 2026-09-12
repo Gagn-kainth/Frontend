@@ -37,3 +37,75 @@
     font-weight: 300;
     font-size:20px;
 }
+.bc-stepper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 32px;
+    padding: 20px;
+}
+  
+  .bc-stepper-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .bc-stepper-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    border: 2px solid #333;
+    color: #999;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  .bc-stepper-circle.active {
+    background: rgb(161, 13, 13);
+    border-color: rgb(161, 13, 13);
+    color: #fff;
+  }
+  
+  .bc-stepper-circle.done {
+    background: #1d9a5c;
+    border-color: #1d9a5c;
+    color: #fff;
+  }
+  
+  .bc-stepper-label {
+    color: #777;
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 8px;
+    white-space: nowrap;
+  }
+  
+  .bc-stepper-label.active {
+    color: #fff;
+  }
+  
+  .bc-stepper-line {
+    width: 60px;
+    height: 2px;
+    background: #333;
+    margin: 0 12px;
+  }
+  
+  .bc-stepper-line.done {
+    background: #1d9a5c;
+  }
+  
+  @media screen and (max-width: 700px) {
+    .bc-stepper-line {
+      width: 24px;
+      margin: 0 6px;
+    }
+  
+    .bc-stepper-label {
+      display: none; /* keep circles only on mobile, or remove this to keep labels */
+    }
+  }

@@ -1,118 +1,163 @@
-
 .bc-summary {
-    position: sticky;
-    top: 24px;
-    justify-content: end;
-    background: #111;
-    border: 1px solid #262626;
-    border-radius: 14px;
-    padding: 24px;
-    width: 320px;
-    flex-shrink: 0;
-  }
-  
-  .bc-summary-title {
-    color: #999;
-    font-size: 12px;
-    letter-spacing: 1px;
-    margin-bottom: 16px;
-  }
-  
-  .bc-summary-row {
-    margin-bottom: 16px;
-  }
-  
-  .bc-summary-label {
-    color: #999;
-    font-size: 11px;
-    letter-spacing: 1px;
-    margin-bottom: 4px;
-  }
-  
-  .bc-summary-value {
-    color: #fff;
-    font-size: 15px;
-    font-weight: 600;
-  }
-  
-  .bc-summary-value.muted {
-    color: #666;
-  }
-  
-  .bc-summary-sub {
-    color: #777;
-    font-size: 12px;
-    margin-top: 2px;
-  }
-  
-  .bc-summary-slots {
-    margin-bottom: 18px;
-  }
-  
-  .bc-summary-slot-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 6px;
-  }
-  
-  .bc-summary-hours {
-    color: #777;
-    font-size: 12px;
-  }
-  
-  .bc-price-section {
-    border-top: 1px solid #262626;
-    margin: 16px 0;
-    padding-top: 16px;
-  }
-  
-  .bc-price-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    font-size: 13px;
-  }
-  
-  .bc-price-row-label {
-    color: #999;
-  }
-  
-  .bc-price-row-value {
-    color: #ccc;
-  }
-  
-  .bc-total-row {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid #262626;
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-  }
-  
-  .bc-total-value {
-    color:rgb(161, 13, 13);;
-  }
-  
-  .bc-continue-btn {
+  position: sticky;
+  top: 24px;
+  justify-content: end;
+  background: #111;
+  border: 1px solid #262626;
+  border-radius: 14px;
+  padding: 24px;
+  width: 320px;
+  flex-shrink: 0;
+}
+
+.bc-summary-title {
+  color: #999;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.bc-summary-row {
+  margin-bottom: 16px;
+}
+
+.bc-summary-label {
+  color: #999;
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.bc-summary-value {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.bc-summary-value.muted {
+  color: #666;
+}
+
+.bc-summary-sub {
+  color: #777;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.bc-summary-slots {
+  margin-bottom: 18px;
+}
+
+.bc-summary-slot-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.bc-summary-hours {
+  color: #777;
+  font-size: 12px;
+}
+
+.bc-price-section {
+  border-top: 1px solid #262626;
+  margin: 16px 0;
+  padding-top: 16px;
+}
+
+.bc-price-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.bc-price-row-label {
+  color: #999;
+}
+
+.bc-price-row-value {
+  color: #ccc;
+}
+
+.bc-total-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #262626;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.bc-total-value {
+  color: rgb(161, 13, 13);
+}
+
+.bc-continue-btn {
+  width: 100%;
+  padding: 14px 0;
+  border-radius: 10px;
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  background: rgb(161, 13, 13);
+  color: #fff;
+  margin-top: 4px;
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.bc-continue-btn:hover {
+  background: rgb(223, 19, 19);
+  transform: translateY(-1px);
+  box-shadow: 3px 6px 14px rgba(161, 13, 13, 0.35);
+}
+
+.bc-continue-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(161, 13, 13, 0.3);
+}
+
+.bc-continue-btn:focus-visible {
+  outline: 2px solid rgb(161, 13, 13);
+  outline-offset: 2px;
+}
+
+.bc-continue-btn:disabled {
+  background: #3a1a17;
+  color: #8a5a55;
+  cursor: not-allowed;
+}
+
+
+/* =========================
+   Mobile Summary
+   ========================= */
+
+@media screen and (max-width: 1100px) {
+  .bc-summary {
+    position: static;
     width: 100%;
-    padding: 14px 0;
-    border-radius: 10px;
-    border: none;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    background:rgb(161, 13, 13);;
-    color: #fff;
-    margin-top: 4px;
+    max-width: 700px;
+    margin: 0 auto;
   }
-  
-  .bc-continue-btn:disabled {
-    background: #3a1a17;
-    color: #8a5a55;
-    cursor: not-allowed;
+}
+
+@media screen and (max-width: 700px) {
+  .bc-summary {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 24px;
   }
-  
+}
+
+@media screen and (max-width: 400px) {
+  .bc-summary {
+    width: 100%;
+    padding: 18px;
+  }
+}

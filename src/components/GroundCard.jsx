@@ -1,5 +1,8 @@
 import '../style/GroundCard.css';
-import ground from "../img/bk.jpg";
+import ground1 from "../img/booking1.jpg";
+import ground2 from "../img/booking2.jpg";
+import ground3 from "../img/booking3.jpg";
+import ground4 from "../img/booking4.jpg";
 export const GROUNDS = [
     {
       id: "ground-1",
@@ -7,7 +10,7 @@ export const GROUNDS = [
       location: "Main Oval, North Wing",
       pricePerHour: 1500,
       tags: ["Floodlights", "Pavilion", "Scoreboards"],
-      image:ground,
+      image:ground1,
       bookedSlots: ["9:00 AM", "10:00 AM", "2:00 PM", "3:00 PM"],
     },
     {
@@ -16,16 +19,16 @@ export const GROUNDS = [
       location: "North End, East Side",
       pricePerHour: 1000,
       tags: ["Pavilion", "Scoreboards"],
-      image:ground,
+      image:ground2,
       bookedSlots: ["6:00 AM", "7:00 AM", "6:00 PM"],
     },
     {
       id: "indoor-net-arena",
-      name: "Indoor Net Arena",
+      name: "In-door Net Arena",
       location: "West Block, Level 1",
       pricePerHour: 800,
       tags: ["6 Lanes", "Bowling Machine", "Video Analysis"],
-      image:ground,
+      image:ground3,
 
       bookedSlots: ["8:00 AM", "9:00 AM"],
     },
@@ -35,7 +38,7 @@ export const GROUNDS = [
       location: "East Wing, Ground Level",
       pricePerHour: 600,
       tags: ["Practice Nets", "Coaching Bay"],
-      image:ground,
+      image:ground4,
 
       bookedSlots: [],
     },

@@ -7,7 +7,8 @@ import Events from "./pages/Events";
 import ProShop from "./pages/ProShop";
 import Membership from "./pages/Membership";
 import BookingGround from "./pages/BookingGround";
-
+import BookingDetails from "./components/BookingDetails";
+import BookingPayment from "./components/BookingPayment";
 function App() {
   return (
     <BrowserRouter>
@@ -16,10 +17,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-         <Route path="/events" element={<Events />} />
+        <Route path="/events" element={<Events />} />
         <Route path="/pro-shop" element={<ProShop />} />
-        <Route path="/membership" element={<Membership />} /> 
-        <Route path="/BookingGround" element={< BookingGround/>} /> 
+        <Route path="/membership" element={<Membership />} />
+        <Route path="/BookingGround" element={<BookingGround />} />
+        <Route path="/BookingGround/details" element={<BookingDetails />} />
+        <Route path="/BookingGround/payment" element={<BookingPayment />} />
       </Routes>
     </BrowserRouter>
   );

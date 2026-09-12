@@ -1,0 +1,212 @@
+.bc-details-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 32px;
+  background-color: #000000;
+}
+
+.bc-details-main {
+  flex: 1;
+  min-width: 0;
+  background: #0d0d0d;
+  border: 1px solid #1f1f1f;
+  border-radius: 16px;
+  padding: 40px;
+}
+
+.bc-details-title {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+
+.bc-field-label {
+  display: block;
+  color: #999;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  margin-top: 20px;
+}
+
+.bc-field-label:first-of-type {
+  margin-top: 0;
+}
+
+.bc-field-input,
+.bc-field-textarea {
+  width: 100%;
+  background: #161616;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 14px 16px;
+  color: #ffffff;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 150ms ease;
+}
+
+.bc-field-input::placeholder,
+.bc-field-textarea::placeholder {
+  color: #666;
+}
+
+.bc-field-input:focus,
+.bc-field-textarea:focus {
+  border-color: rgb(161, 13, 13);
+}
+
+.bc-field-textarea {
+  resize: vertical;
+  min-height: 110px;
+  font-family: inherit;
+}
+
+.bc-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.bc-details-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.bc-back-btn {
+  background: transparent;
+  color: #ccc;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+
+.bc-back-btn:hover {
+  background: #1a1a1a;
+}
+
+.bc-proceed-btn {
+  flex: 1;
+  background: rgb(161, 13, 13);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 24px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 150ms ease;
+}
+
+.bc-proceed-btn:hover {
+  opacity: 0.9;
+}
+.bc-field-input.error {
+  border-color: rgb(196, 24, 24);
+}
+
+.bc-field-error {
+  display: block;
+  color: rgb(220, 60, 60);
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+/* =========================
+   Responsive - Tablet
+   ========================= */
+
+@media screen and (max-width: 1100px) {
+  .bc-details-layout {
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
+  }
+
+  .bc-details-main {
+    width: 100%;
+    max-width: 700px;
+  }
+
+  .bc-booking-sidebar {
+    width: 100%;
+    max-width: 700px;
+    position: static;
+    top: unset;
+  }
+}
+
+
+/* =========================
+   Responsive - Mobile
+   ========================= */
+
+@media screen and (max-width: 700px) {
+  .bc-details-layout {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+  }
+
+  .bc-details-main {
+    width: 100%;
+    max-width: 500px;
+    padding: 24px;
+    margin: 0 auto;
+  }
+
+  .bc-field-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .bc-details-actions {
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+  .bc-back-btn,
+  .bc-proceed-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .bc-booking-sidebar {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+/* =========================
+   Small Mobile
+   ========================= */
+
+@media screen and (max-width: 400px) {
+  .bc-details-layout {
+    padding: 20px 12px;
+  }
+
+  .bc-details-title {
+    font-size: 22px;
+  }
+
+  .bc-details-main {
+    width: 100%;
+    padding: 18px;
+  }
+}
