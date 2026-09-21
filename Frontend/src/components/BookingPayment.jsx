@@ -146,7 +146,6 @@ function BookingPayment() {
           try {
             console.log("STEP 4: Payment successful:", response);
 
-            // 5. Verify payment on backend
             const verifyResponse = await axios.post(
               "http://localhost:5000/api/payments/verify",
               {
@@ -159,26 +158,19 @@ function BookingPayment() {
 
             console.log("STEP 5: Payment verified:", verifyResponse.data);
 
-            // Go to success page
-            // navigate("/BookingGround/success", {
-            //   state: {
-            //     booking: verifyResponse.data.booking,
-            //   },
-            // });
-            console.log("Payment verified successfully");
-            alert("Payment successful!");
+            navigate("/BookingGround/success", {
+              state: {
+                booking: verifyResponse.data.booking,
+                paymentId: response.razorpay_payment_id,
+              },
+            });
           } catch (error) {
             console.error(
               "Payment verification failed:",
               error.response?.data || error.message
             );
-
-            alert("Payment verification failed. Please contact support.");
-          } finally {
-            setPaying(false);
           }
         },
-
         modal: {
           ondismiss: function () {
             console.log("Razorpay checkout closed");

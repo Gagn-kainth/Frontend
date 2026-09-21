@@ -9,6 +9,7 @@ import Membership from "./pages/Membership";
 import BookingGround from "./pages/BookingGround";
 import BookingDetails from "./components/BookingDetails";
 import BookingPayment from "./components/BookingPayment";
+import BookingSuccess from "./pages/BookingSuccess";
 function App() {
   return (
     <BrowserRouter>
@@ -23,6 +24,7 @@ function App() {
         <Route path="/BookingGround" element={<BookingGround />} />
         <Route path="/BookingGround/details" element={<BookingDetails />} />
         <Route path="/BookingGround/payment" element={<BookingPayment />} />
+        <Route path="/BookingGround/success" element={<BookingSuccess />} />
       </Routes>
     </BrowserRouter>
   );

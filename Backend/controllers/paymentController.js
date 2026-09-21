@@ -61,7 +61,7 @@ async function verifyPayment(req, res, next) {
         paymentStatus: "paid",
         razorpayPaymentId: razorpay_payment_id,
       },
-      { new: true }
+      { returnDocument: "after" }
     );
 
     res.json({ message: "Payment verified", booking });
