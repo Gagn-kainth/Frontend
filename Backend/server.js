@@ -4,12 +4,16 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 
 
-const groundRoutes = require("./routes/groundRoutes");
-const bookingRoutes = require("./routes/bookingRoutes");
 
 dotenv.config();
 connectDB();
 const app = express();
+
+
+
+const groundRoutes = require("./routes/groundRoutes");
+const bookingRoutes = require("./routes/bookingRoutes");
+const paymentRoutes = require("./routes/paymentRoutes");
 
 app.use(
     cors({
@@ -21,6 +25,7 @@ app.use(
 
 app.use("/api/grounds", groundRoutes);
 app.use("/api/bookings", bookingRoutes);
+app.use("/api/payments", paymentRoutes);
 
 
 app.use((err, req, res, next) => {

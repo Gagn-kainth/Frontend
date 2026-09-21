@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+
 import "../style/BookingDetails.css";
 import BookingGroundHero from "../components/BookingGroundHero";
 import BookingSummary from "../components/BookingSummary";
-import { GROUNDS } from "../components/GroundCard";
 
 function BookingDetails() {
   const location = useLocation();
   const navigate = useNavigate();
+
   const { groundId, date, selectedSlots } = location.state || {};
 
-  const ground = GROUNDS.find((g) => g.id === groundId);
+  const [ground, setGround] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const [form, setForm] = useState({
     fullName: "",
@@ -22,25 +25,68 @@ function BookingDetails() {
 
   const [errors, setErrors] = useState({});
 
-  if (!ground || !selectedSlots?.length) {
+  // Fetch selected ground from MongoDB
+  useEffect(() => {
+    async function fetchGround() {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/grounds/${groundId}`
+        );
+
+        setGround(response.data);
+      } catch (error) {
+        console.error(
+          "Failed to fetch ground:",
+          error.response?.data || error.message
+        );
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    if (groundId) {
+      fetchGround();
+    } else {
+      setLoading(false);
+    }
+  }, [groundId]);
+
+  // Invalid booking state
+  if (!groundId || !selectedSlots?.length) {
     navigate("/BookingGround", { replace: true });
     return null;
   }
 
+  if (loading) {
+    return <div>Loading ground...</div>;
+  }
+
+  if (!ground) {
+    return <div>Ground not found.</div>;
+  }
+
   function handleChange(e) {
     const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
 
-    // clear error for this field as user types
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
     if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: null }));
+      setErrors((prev) => ({
+        ...prev,
+        [name]: null,
+      }));
     }
   }
 
   function validate() {
     const newErrors = {};
 
-    if (!form.fullName.trim()) newErrors.fullName = "Full name is required";
+    if (!form.fullName.trim()) {
+      newErrors.fullName = "Full name is required";
+    }
 
     if (!form.email.trim()) {
       newErrors.email = "Email is required";
@@ -61,6 +107,7 @@ function BookingDetails() {
     }
 
     setErrors(newErrors);
+
     return Object.keys(newErrors).length === 0;
   }
 
@@ -68,18 +115,25 @@ function BookingDetails() {
     if (!validate()) return;
 
     navigate("/BookingGround/payment", {
-      state: { groundId, date, selectedSlots, form },
+      state: {
+        groundId,
+        date,
+        selectedSlots,
+        form,
+      },
     });
   }
 
   return (
     <>
       <BookingGroundHero currentStep={1} />
+
       <div className="bc-details-layout">
         <div className="bc-details-main">
           <h2 className="bc-details-title">Your Information</h2>
 
           <label className="bc-field-label">FULL NAME *</label>
+
           <input
             className={`bc-field-input${errors.fullName ? " error" : ""}`}
             name="fullName"
@@ -87,11 +141,19 @@ function BookingDetails() {
             value={form.fullName}
             onChange={handleChange}
           />
-          {errors.fullName && <span className="bc-field-error">{errors.fullName}</span>}
+
+          {errors.fullName && (
+            <span className="bc-field-error">
+              {errors.fullName}
+            </span>
+          )}
 
           <div className="bc-field-row">
             <div>
-              <label className="bc-field-label">EMAIL ADDRESS *</label>
+              <label className="bc-field-label">
+                EMAIL ADDRESS *
+              </label>
+
               <input
                 className={`bc-field-input${errors.email ? " error" : ""}`}
                 name="email"
@@ -99,23 +161,39 @@ function BookingDetails() {
                 value={form.email}
                 onChange={handleChange}
               />
-              {errors.email && <span className="bc-field-error">{errors.email}</span>}
+
+              {errors.email && (
+                <span className="bc-field-error">
+                  {errors.email}
+                </span>
+              )}
             </div>
 
             <div>
-              <label className="bc-field-label">PHONE NUMBER *</label>
+              <label className="bc-field-label">
+                PHONE NUMBER *
+              </label>
+
               <input
                 className={`bc-field-input${errors.phone ? " error" : ""}`}
                 name="phone"
-                placeholder="+91  9876543210"
+                placeholder="+91 9876543210"
                 value={form.phone}
                 onChange={handleChange}
               />
-              {errors.phone && <span className="bc-field-error">{errors.phone}</span>}
+
+              {errors.phone && (
+                <span className="bc-field-error">
+                  {errors.phone}
+                </span>
+              )}
             </div>
           </div>
 
-          <label className="bc-field-label">NUMBER OF PLAYERS *</label>
+          <label className="bc-field-label">
+            NUMBER OF PLAYERS *
+          </label>
+
           <input
             className={`bc-field-input${errors.players ? " error" : ""}`}
             name="players"
@@ -123,9 +201,17 @@ function BookingDetails() {
             value={form.players}
             onChange={handleChange}
           />
-          {errors.players && <span className="bc-field-error">{errors.players}</span>}
 
-          <label className="bc-field-label">ADDITIONAL NOTES (optional)</label>
+          {errors.players && (
+            <span className="bc-field-error">
+              {errors.players}
+            </span>
+          )}
+
+          <label className="bc-field-label">
+            ADDITIONAL NOTES (optional)
+          </label>
+
           <textarea
             className="bc-field-textarea"
             name="notes"
@@ -135,11 +221,17 @@ function BookingDetails() {
           />
 
           <div className="bc-details-actions">
-            <button className="bc-back-btn" onClick={() => navigate(-1)}>
+            <button
+              className="bc-back-btn"
+              onClick={() => navigate(-1)}
+            >
               ← Back to Ground Selection
             </button>
 
-            <button className="bc-proceed-btn" onClick={handleProceed}>
+            <button
+              className="bc-proceed-btn"
+              onClick={handleProceed}
+            >
               Proceed to Payment →
             </button>
           </div>

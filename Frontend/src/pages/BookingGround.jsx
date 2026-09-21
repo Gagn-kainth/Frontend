@@ -1,20 +1,41 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../style/BookingGround.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import BookingGroundHero from "../components/BookingGroundHero";
 import DateSelector from "../components/DateSelector";
-import GroundCard, { GROUNDS } from "../components/GroundCard";
+import GroundCard from "../components/GroundCard";
 import TimeSlotGrid from "../components/TimeSlotGrid";
 import BookingSummary from "../components/BookingSummary";
 
 function BookingGround() {
   const navigate = useNavigate();
+
+  const [grounds, setGrounds] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
   const [selectedSlots, setSelectedSlots] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
 
-  const selectedGround = GROUNDS.find((g) => g.id === selectedId);
+  // Fetch grounds from MongoDB
+  useEffect(() => {
+    async function fetchGrounds() {
+      try {
+        const response = await axios.get("http://localhost:5000/api/grounds");
+
+        setGrounds(response.data);
+      } catch (error) {
+        console.error(
+          "Failed to fetch grounds:",
+          error.response?.data || error.message
+        );
+      }
+    }
+
+    fetchGrounds();
+  }, []);
+
+  const selectedGround = grounds.find((ground) => ground._id === selectedId);
 
   function handleSelectGround(id) {
     setSelectedId(id);
@@ -28,9 +49,13 @@ function BookingGround() {
   }
 
   function handleContinue() {
+    if (!selectedGround || !selectedDate || selectedSlots.length === 0) {
+      return;
+    }
+
     navigate("/BookingGround/details", {
       state: {
-        groundId: selectedGround.id,
+        groundId: selectedGround._id,
         date: selectedDate,
         selectedSlots,
       },
@@ -50,11 +75,11 @@ function BookingGround() {
         {/* LEFT SIDE */}
         <div className="bc-booking-main">
           <div className="bc-ground-list">
-            {GROUNDS.map((ground) => (
+            {grounds.map((ground) => (
               <GroundCard
-                key={ground.id}
+                key={ground._id}
                 ground={ground}
-                isSelected={selectedId === ground.id}
+                isSelected={selectedId === ground._id}
                 onSelect={handleSelectGround}
               />
             ))}
@@ -62,6 +87,7 @@ function BookingGround() {
 
           <TimeSlotGrid
             ground={selectedGround}
+            selectedDate={selectedDate}
             selectedSlots={selectedSlots}
             onToggleSlot={handleToggleSlot}
           />
