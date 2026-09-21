@@ -1,41 +1,201 @@
 .gallery-section {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-  
-    padding: 80px 0;
-    background-color: #f8f3e7;
+  padding: 100px 0;
+  background-color: #f8f3e7;
+  overflow: hidden;
+}
+
+.gallery-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 50px;
+  padding: 0 20px;
+}
+
+.gallery-eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #b91c1c;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.gallery-header h2 {
+  font-size: 36px;
+  margin: 0 0 10px;
+  color: #1a1a1a;
+}
+
+.gallery-header p {
+  font-size: 16px;
+  color: #6b6b6b;
+  margin: 0;
+}
+
+/* ---- Slider ---- */
+
+.gallery-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+}
+
+.gallery-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: scrollTrack 30s linear infinite;
+}
+
+.gallery-slider:hover .gallery-track {
+  animation-play-state: paused;
+}
+
+@keyframes scrollTrack {
+  from {
+    transform: translateX(0);
   }
-  
-  .gallery-item {
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
+  to {
+    transform: translateX(-50%);
   }
-  
-  .gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  
-    transition: transform 0.5s ease;
+}
+
+.gallery-slide {
+  position: relative;
+  flex: 0 0 auto;
+  width: 340px;
+  height: 420px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery-slide:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.gallery-slide:hover img {
+  transform: scale(1.1);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 22px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.15) 55%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.gallery-slide:hover .gallery-overlay {
+  opacity: 1;
+}
+
+/* ---- Caption ---- */
+
+.gallery-caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 7px;
+}
+
+.caption-word {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 4px;
+}
+
+.caption-word-inner {
+  display: inline-block;
+  color: #fff;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+
+  transform: translateY(115%) scale(0.92);
+  filter: blur(4px);
+  opacity: 0;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.5s ease, opacity 0.4s ease;
+}
+
+.gallery-slide:hover .caption-word-inner {
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+  opacity: 1;
+}
+
+.gallery-caption-line {
+  position: relative;
+  display: block;
+  width: 0;
+  height: 2px;
+  margin-top: 10px;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
+}
+
+.gallery-slide:hover .gallery-caption-line {
+  width: 48px;
+}
+
+@media (max-width: 768px) {
+  .gallery-section {
+    padding: 70px 0;
   }
-  
-  .gallery-item:hover img {
-    transform: scale(1.08);
+  .gallery-slide {
+    width: 260px;
+    height: 320px;
   }
-  @media (max-width: 768px) {
-    .gallery-section {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-      padding: 60px 20px;
-    }
+  .gallery-track {
+    gap: 16px;
+    animation-duration: 22s;
   }
-  
-  @media (max-width: 480px) {
-    .gallery-section {
-      grid-template-columns: 1fr;
-      gap: 15px;
-      padding: 50px 15px;
-    }
+  .caption-word-inner {
+    font-size: 16px;
   }
+}
+
+@media (max-width: 480px) {
+  .gallery-slide {
+    width: 220px;
+    height: 280px;
+  }
+}
