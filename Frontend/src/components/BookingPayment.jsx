@@ -20,6 +20,7 @@ function BookingPayment() {
   const navigate = useNavigate();
 
   const { groundId, date, selectedSlots, form } = location.state || {};
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const [ground, setGround] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -30,7 +31,7 @@ function BookingPayment() {
     async function fetchGround() {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/grounds/${groundId}`
+          `${API_URL}/api/grounds/${groundId}`
         );
 
         setGround(response.data);
@@ -88,7 +89,7 @@ function BookingPayment() {
 
       // 1. Create booking in MongoDB
       const bookingResponse = await axios.post(
-        "http://localhost:5000/api/bookings",
+        `${API_URL}/api/bookings`,
         {
           groundId,
           date,
@@ -108,7 +109,7 @@ function BookingPayment() {
 
       // 2. Create Razorpay order
       const orderResponse = await axios.post(
-        "http://localhost:5000/api/payments/create-order",
+        `${API_URL}/api/payments/create-order`,
         {
           bookingId: booking._id,
         }
@@ -147,7 +148,7 @@ function BookingPayment() {
             console.log("STEP 4: Payment successful:", response);
 
             const verifyResponse = await axios.post(
-              "http://localhost:5000/api/payments/verify",
+              `${API_URL}/api/payments/verify`,
               {
                 bookingId: booking._id,
                 razorpay_order_id: response.razorpay_order_id,

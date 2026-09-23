@@ -9,19 +9,21 @@ import GroundCard from "../components/GroundCard";
 import TimeSlotGrid from "../components/TimeSlotGrid";
 import BookingSummary from "../components/BookingSummary";
 
+
 function BookingGround() {
   const navigate = useNavigate();
-
+  
   const [grounds, setGrounds] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
   const [selectedSlots, setSelectedSlots] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
-
+  const API_URL = import.meta.env.VITE_API_URL;
+  
   // Fetch grounds from MongoDB
   useEffect(() => {
     async function fetchGrounds() {
       try {
-        const response = await axios.get("http://localhost:5000/api/grounds");
+        const response = await axios.get(`${API_URL}/api/grounds`);
 
         setGrounds(response.data);
       } catch (error) {
