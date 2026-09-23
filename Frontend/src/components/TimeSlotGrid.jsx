@@ -37,6 +37,8 @@ function TimeSlotGrid({
   onToggleSlot,
 }) {
   const [bookedSlots, setBookedSlots] = useState([]);
+  const API_URL = import.meta.env.VITE_API_URL;
+
 
   useEffect(() => {
     async function fetchAvailability() {
@@ -53,7 +55,7 @@ function TimeSlotGrid({
         ).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 
         const response = await axios.get(
-          `http://localhost:5000/api/grounds/${ground._id}/availability?date=${dateParam}`
+          `${API_URL}/api/grounds/${ground._id}/availability?date=${dateParam}`
         );
 
         setBookedSlots(response.data.bookedSlots || []);

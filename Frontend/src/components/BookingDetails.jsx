@@ -11,6 +11,8 @@ function BookingDetails() {
   const navigate = useNavigate();
 
   const { groundId, date, selectedSlots } = location.state || {};
+  const API_URL = import.meta.env.VITE_API_URL;
+
 
   const [ground, setGround] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -30,7 +32,7 @@ function BookingDetails() {
     async function fetchGround() {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/grounds/${groundId}`
+          `${API_URL}/api/grounds/${groundId}`
         );
 
         setGround(response.data);
