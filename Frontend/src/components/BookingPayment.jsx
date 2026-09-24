@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../api/axios";
 
 import "../style/BookingPayment.css";
 import BookingGroundHero from "./BookingGroundHero";
@@ -20,9 +20,7 @@ function BookingPayment() {
   const navigate = useNavigate();
 
   const { groundId, date, selectedSlots, form } = location.state || {};
-  const API_URL = import.meta.env.VITE_API_URL;
-
-  const [ground, setGround] = useState(null);
+const [ground, setGround] = useState(null);
   const [loading, setLoading] = useState(true);
   const [paying, setPaying] = useState(false);
 
@@ -30,8 +28,8 @@ function BookingPayment() {
   useEffect(() => {
     async function fetchGround() {
       try {
-        const response = await axios.get(
-          `${API_URL}/api/grounds/${groundId}`
+        const response = await api.get(
+          `/api/grounds/${groundId}`
         );
 
         setGround(response.data);
@@ -88,8 +86,8 @@ function BookingPayment() {
       console.log("STEP 1: Creating booking...");
 
       // 1. Create booking in MongoDB
-      const bookingResponse = await axios.post(
-        `${API_URL}/api/bookings`,
+      const bookingResponse = await api.post(
+        `/api/bookings`,
         {
           groundId,
           date,
@@ -108,8 +106,8 @@ function BookingPayment() {
       console.log("Booking ID:", booking._id);
 
       // 2. Create Razorpay order
-      const orderResponse = await axios.post(
-        `${API_URL}/api/payments/create-order`,
+      const orderResponse = await api.post(
+        `/api/payments/create-order`,
         {
           bookingId: booking._id,
         }
@@ -147,8 +145,8 @@ function BookingPayment() {
           try {
             console.log("STEP 4: Payment successful:", response);
 
-            const verifyResponse = await axios.post(
-              `${API_URL}/api/payments/verify`,
+            const verifyResponse = await api.post(
+              `/api/payments/verify`,
               {
                 bookingId: booking._id,
                 razorpay_order_id: response.razorpay_order_id,

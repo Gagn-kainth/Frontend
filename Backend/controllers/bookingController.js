@@ -3,7 +3,6 @@ const Ground = require("../models/Ground");
 
 const GST_RATE = 0.18;
 
-
 async function createBooking(req, res, next) {
   try {
     const { groundId, date, slots, fullName, email, phone, players, notes } =
@@ -14,6 +13,7 @@ async function createBooking(req, res, next) {
         .status(400)
         .json({ message: "groundId, date and at least one slot are required" });
     }
+
     if (!fullName || !email || !phone || !players) {
       return res
         .status(400)
@@ -21,12 +21,14 @@ async function createBooking(req, res, next) {
     }
 
     const ground = await Ground.findById(groundId);
+
     if (!ground) {
       return res.status(404).json({ message: "Ground not found" });
     }
 
     const dayStart = new Date(date);
     dayStart.setHours(0, 0, 0, 0);
+
     const dayEnd = new Date(date);
     dayEnd.setHours(23, 59, 59, 999);
 
@@ -45,17 +47,17 @@ async function createBooking(req, res, next) {
       });
     }
 
-
     const basePrice = ground.pricePerHour * slots.length;
     const gst = Math.round(basePrice * GST_RATE);
     const total = basePrice + gst;
 
     const booking = await Booking.create({
+      user: req.user._id,
       ground: groundId,
       date,
       slots,
       fullName,
-      email,
+      email: email.toLowerCase(),
       phone,
       players,
       notes,
@@ -73,10 +75,15 @@ async function createBooking(req, res, next) {
 
 async function getBookingById(req, res, next) {
   try {
-    const booking = await Booking.findById(req.params.id).populate("ground");
+    const booking = await Booking.findOne({
+      _id: req.params.id,
+      user: req.user._id,
+    }).populate("ground");
+
     if (!booking) {
       return res.status(404).json({ message: "Booking not found" });
     }
+
     res.json(booking);
   } catch (err) {
     next(err);

@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Events from "./pages/Events";
@@ -10,6 +11,9 @@ import BookingGround from "./pages/BookingGround";
 import BookingDetails from "./components/BookingDetails";
 import BookingPayment from "./components/BookingPayment";
 import BookingSuccess from "./pages/BookingSuccess";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+
 function App() {
   return (
     <BrowserRouter>
@@ -21,10 +25,42 @@ function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/pro-shop" element={<ProShop />} />
         <Route path="/membership" element={<Membership />} />
-        <Route path="/BookingGround" element={<BookingGround />} />
-        <Route path="/BookingGround/details" element={<BookingDetails />} />
-        <Route path="/BookingGround/payment" element={<BookingPayment />} />
-        <Route path="/BookingGround/success" element={<BookingSuccess />} />
+
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
+        <Route
+          path="/BookingGround"
+          element={
+            <ProtectedRoute>
+              <BookingGround />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/BookingGround/details"
+          element={
+            <ProtectedRoute>
+              <BookingDetails />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/BookingGround/payment"
+          element={
+            <ProtectedRoute>
+              <BookingPayment />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/BookingGround/success"
+          element={
+            <ProtectedRoute>
+              <BookingSuccess />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

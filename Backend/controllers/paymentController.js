@@ -11,13 +11,21 @@ async function createOrder(req, res, next) {
   try {
     const { bookingId } = req.body;
 
-    const booking = await Booking.findById(bookingId);
+    const booking = await Booking.findOne({
+      _id: bookingId,
+      user: req.user._id,
+    });
+
     if (!booking) {
       return res.status(404).json({ message: "Booking not found" });
     }
 
+    if (booking.paymentStatus === "paid") {
+      return res.status(400).json({ message: "Booking is already paid" });
+    }
+
     const order = await razorpay.orders.create({
-      amount: booking.total * 100, 
+      amount: booking.total * 100,
       currency: "INR",
       receipt: `receipt_${booking._id}`,
     });
@@ -29,7 +37,7 @@ async function createOrder(req, res, next) {
       orderId: order.id,
       amount: order.amount,
       currency: order.currency,
-      keyId: process.env.RAZORPAY_KEY_ID, 
+      keyId: process.env.RAZORPAY_KEY_ID,
     });
   } catch (err) {
     next(err);
@@ -45,26 +53,39 @@ async function verifyPayment(req, res, next) {
       razorpay_signature,
     } = req.body;
 
+    const booking = await Booking.findOne({
+      _id: bookingId,
+      user: req.user._id,
+    });
+
+    if (!booking) {
+      return res.status(404).json({ message: "Booking not found" });
+    }
+
+    if (booking.razorpayOrderId !== razorpay_order_id) {
+      return res.status(400).json({ message: "Invalid Razorpay order" });
+    }
+
     const expectedSignature = crypto
       .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
       .update(`${razorpay_order_id}|${razorpay_payment_id}`)
       .digest("hex");
 
     if (expectedSignature !== razorpay_signature) {
-      await Booking.findByIdAndUpdate(bookingId, { paymentStatus: "failed" });
+      booking.paymentStatus = "failed";
+      await booking.save();
+
       return res.status(400).json({ message: "Invalid payment signature" });
     }
 
-    const booking = await Booking.findByIdAndUpdate(
-      bookingId,
-      {
-        paymentStatus: "paid",
-        razorpayPaymentId: razorpay_payment_id,
-      },
-      { returnDocument: "after" }
-    );
+    booking.paymentStatus = "paid";
+    booking.razorpayPaymentId = razorpay_payment_id;
+    await booking.save();
 
-    res.json({ message: "Payment verified", booking });
+    res.json({
+      message: "Payment verified",
+      booking,
+    });
   } catch (err) {
     next(err);
   }

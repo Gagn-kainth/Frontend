@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../api/axios";
 
 import "../style/BookingDetails.css";
 import BookingGroundHero from "../components/BookingGroundHero";
@@ -11,10 +11,7 @@ function BookingDetails() {
   const navigate = useNavigate();
 
   const { groundId, date, selectedSlots } = location.state || {};
-  const API_URL = import.meta.env.VITE_API_URL;
-
-
-  const [ground, setGround] = useState(null);
+const [ground, setGround] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const [form, setForm] = useState({
@@ -31,8 +28,8 @@ function BookingDetails() {
   useEffect(() => {
     async function fetchGround() {
       try {
-        const response = await axios.get(
-          `${API_URL}/api/grounds/${groundId}`
+        const response = await api.get(
+          `/api/grounds/${groundId}`
         );
 
         setGround(response.data);

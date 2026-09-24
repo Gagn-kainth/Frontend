@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../style/BookingGround.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../api/axios";
 
 import BookingGroundHero from "../components/BookingGroundHero";
 import DateSelector from "../components/DateSelector";
@@ -17,13 +17,11 @@ function BookingGround() {
   const [selectedId, setSelectedId] = useState(null);
   const [selectedSlots, setSelectedSlots] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
-  const API_URL = import.meta.env.VITE_API_URL;
-  
-  // Fetch grounds from MongoDB
+// Fetch grounds from MongoDB
   useEffect(() => {
     async function fetchGrounds() {
       try {
-        const response = await axios.get(`${API_URL}/api/grounds`);
+        const response = await api.get(`/api/grounds`);
 
         setGrounds(response.data);
       } catch (error) {
