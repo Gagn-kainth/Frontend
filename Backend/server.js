@@ -9,18 +9,20 @@ dotenv.config();
 const app = express();
 
 const allowedOrigins = [
-  process.env.FRONTEND_URL,
   "http://localhost:5173",
-].filter(Boolean);
+  "https://frontend-git-main-gagn-s-projects.vercel.app",
+];
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      }
+      console.log("CORS request from:", origin);
 
-      return callback(new Error("CORS origin not allowed"));
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("CORS origin not allowed"));
+      }
     },
     credentials: true,
   })
