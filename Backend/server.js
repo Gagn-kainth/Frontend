@@ -10,7 +10,7 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://frontend-git-main-gagn-s-projects.vercel.app",
+  "https://frontend-git-main-gagn-s-projects.vercel.app",  "https://boundaryclub.vercel.app",
 ];
 
 app.use(
